@@ -26,7 +26,7 @@ class Figure:
             return True
 
     def __is_valid_color(self, r, g, b):    #проверка RGB на соответствие параметрам с помощью метода __valid_c
-        if self.__valid_c(r, g, b):    
+        if self.__valid_c(r, g, b):
             return True
         else:
             return False
@@ -37,10 +37,13 @@ class Figure:
         # else:
         #     print ( f'Некорректное значение цвета: {(r, g, b)}, введите заново' )
 
-    def __is_valid_sides(self, args):  #значение стороны "+" и целое, сравнение кол-ва с сущ. количеством сторон фигуры
-        if isinstance(args[0], int) and args[0] > 0 and len(args) == self.sides_count:
-            return True
-        else: False
+    def __is_valid_sides(self, *sides):  #значение стороны "+" и целое, сравнение кол-ва с сущ. количеством сторон фигуры
+        fl = False
+        for i in sides:
+            if isinstance(i, int) and i > 0 and len(sides) == self.sides_count:
+                fl = True
+            else: fl = False
+        return fl
 
     def set_sides(self, *new_sides):
         if self.__is_valid_sides(new_sides):
