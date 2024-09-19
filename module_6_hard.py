@@ -40,10 +40,12 @@ class Figure:
     def __is_valid_sides(self, *sides):  #значение стороны "+" и целое, сравнение кол-ва с сущ. количеством сторон фигуры
         fl = False
         for i in sides:
-            if isinstance(i, int) and i > 0 and len(sides) == self.sides_count:
+            if isinstance(i, int) and i > 0:
                 fl = True
-            else: fl = False
-        return fl
+            else:
+                fl = False
+        if fl and len(sides) == self.sides_count:
+            return True
 
     def set_sides(self, *new_sides):
         if self.__is_valid_sides(new_sides):
@@ -96,6 +98,8 @@ class Cube(Figure):
 
 
 
+circle1 = Circle((266, 200, 100), 10) # (Цвет, стороны)
+print(circle1.get_color())
 circle1 = Circle((200, 200, 100), 10) # (Цвет, стороны)
 cube1 = Cube((222, 35, 130), 6)
 
